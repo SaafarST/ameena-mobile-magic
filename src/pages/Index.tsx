@@ -26,11 +26,18 @@ const Index = () => {
   ];
 
   return (
-    <div className="flex flex-col h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-background px-4 py-3 flex items-center justify-between sticky top-0 z-50">
-        <h1 className="text-xl font-bold text-primary">Ameena ✨</h1>
-        <Button variant="ghost" size="icon" onClick={toggleTheme}>
+    <div className="flex flex-col h-screen">
+      {/* Header with gradient */}
+      <header className="bg-card/80 backdrop-blur-lg border-b px-4 py-4 flex items-center justify-between sticky top-0 z-50 shadow-sm">
+        <div className="flex items-center gap-2">
+          <div className="w-10 h-10 rounded-2xl gradient-primary flex items-center justify-center text-2xl shadow-lg">
+            ✨
+          </div>
+          <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Ameena
+          </h1>
+        </div>
+        <Button variant="ghost" size="icon" onClick={toggleTheme} className="hover:bg-muted">
           {theme === 'light' ? (
             <Moon className="w-5 h-5" />
           ) : (
@@ -48,18 +55,22 @@ const Index = () => {
       </main>
 
       {/* Bottom Navigation */}
-      <nav className="border-t bg-background">
-        <div className="flex items-center justify-around px-2 py-2">
+      <nav className="border-t bg-card/80 backdrop-blur-lg shadow-lg">
+        <div className="flex items-center justify-around px-2 py-3">
           {tabs.map(({ id, icon: Icon, label }) => (
             <Button
               key={id}
-              variant={activeTab === id ? 'default' : 'ghost'}
+              variant="ghost"
               size="sm"
               onClick={() => setActiveTab(id)}
-              className="flex-1 flex-col h-auto py-2 gap-1"
+              className={`flex-1 flex-col h-auto py-3 gap-1 transition-all ${
+                activeTab === id 
+                  ? 'text-primary bg-primary/10 shadow-sm' 
+                  : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+              }`}
             >
-              <Icon className="w-5 h-5" />
-              <span className="text-xs">{label}</span>
+              <Icon className="w-6 h-6" />
+              <span className="text-xs font-medium">{label}</span>
             </Button>
           ))}
         </div>

@@ -49,20 +49,26 @@ export default function Chat() {
     <div className="flex flex-col h-full">
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.length === 0 && (
-          <div className="flex items-center justify-center h-full text-muted-foreground">
-            <p>Саволи худро дар поён нависед</p>
+          <div className="flex flex-col items-center justify-center h-full text-center px-6 space-y-4">
+            <div className="w-20 h-20 rounded-3xl gradient-primary flex items-center justify-center text-4xl shadow-xl animate-fade-in">
+              ✨
+            </div>
+            <div className="space-y-2 animate-fade-in">
+              <p className="text-xl font-semibold text-foreground">Салом! Ман Ameena ҳастам</p>
+              <p className="text-sm text-muted-foreground">Саволи худро дар поён нависед</p>
+            </div>
           </div>
         )}
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            className={`flex animate-fade-in ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+              className={`max-w-[80%] rounded-3xl px-5 py-3 shadow-md ${
                 msg.role === 'user'
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-muted text-foreground'
+                  ? 'gradient-primary text-white'
+                  : 'bg-card border border-border text-foreground'
               }`}
             >
               <p className="whitespace-pre-wrap break-words">{msg.content}</p>
@@ -70,17 +76,17 @@ export default function Chat() {
           </div>
         ))}
         {isLoading && (
-          <div className="flex justify-start">
-            <div className="bg-muted rounded-2xl px-4 py-3">
-              <Loader2 className="w-5 h-5 animate-spin" />
+          <div className="flex justify-start animate-fade-in">
+            <div className="bg-card border border-border rounded-3xl px-5 py-3 shadow-md">
+              <Loader2 className="w-5 h-5 animate-spin text-primary" />
             </div>
           </div>
         )}
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="p-4 border-t bg-background">
-        <div className="flex gap-2">
+      <div className="p-4 border-t bg-card/80 backdrop-blur-lg">
+        <div className="flex gap-3">
           <Textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -91,14 +97,14 @@ export default function Chat() {
               }
             }}
             placeholder="Паём нависед..."
-            className="min-h-[50px] max-h-[150px] resize-none"
+            className="min-h-[56px] max-h-[150px] resize-none border-2 focus:border-primary rounded-2xl"
             disabled={isLoading}
           />
           <Button
             onClick={handleSend}
             disabled={!input.trim() || isLoading}
             size="icon"
-            className="h-[50px] w-[50px] shrink-0"
+            className="h-[56px] w-[56px] shrink-0 gradient-primary shadow-lg hover:shadow-xl transition-all rounded-2xl"
           >
             <Send className="w-5 h-5" />
           </Button>
