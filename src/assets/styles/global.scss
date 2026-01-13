@@ -2,6 +2,9 @@
   Base styles for Saidzoda Engineering Website
 */
 
+@import './variables';
+@import './mixins';
+
 /* Reset and base styles */
 *, *::before, *::after {
   box-sizing: border-box;

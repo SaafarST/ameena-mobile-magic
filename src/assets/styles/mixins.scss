@@ -1,3 +1,5 @@
+@import './variables';
+
 // Media queries
 @mixin media-breakpoint-up($breakpoint) {
   @if $breakpoint == sm {
