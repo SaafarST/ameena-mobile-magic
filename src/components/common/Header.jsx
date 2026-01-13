@@ -31,9 +31,9 @@ const Header = () => {
 
   const getLogoSrc = () => {
     if (isHomePage && !isScrolled) {
-      return "https://raw.githubusercontent.com/SaafarST/saidzoda-engineering/main/public/images/logo/saidzoda-logo-dark.jpeg"
+      return "/images/logo/saidzoda-logo-dark.jpeg"
     }
-    return "https://raw.githubusercontent.com/SaafarST/saidzoda-engineering/main/public/images/logo/saidzoda-logo-light.jpeg"
+    return "/images/logo/saidzoda-logo-light.jpeg"
   }
 
   const headerStyle = {
