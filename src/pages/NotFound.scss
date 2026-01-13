@@ -1,5 +1,4 @@
-@import "../assets/styles/variables.scss";
-@import "../assets/styles/mixins.scss";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 .not-found-page {
   min-height: 100vh;
@@ -7,9 +6,9 @@
   align-items: center;
   justify-content: center;
   padding-top: 80px;
-  background-color: $light-gray;
+  background-color: #f8f9fa;
   background-image: 
-    linear-gradient(rgba($white, 0.9), rgba($white, 0.9)),
+    linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
     url('/images/patterns/tech-pattern.svg');
   background-repeat: repeat;
   background-size: 100px;
@@ -18,38 +17,42 @@
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
-    padding: $spacing-8;
+    padding: 2rem;
     
     .error-code {
       font-size: 8rem;
-      font-weight: $font-weight-bold;
-      color: $primary-color;
+      font-weight: 700;
+      color: #0066cc;
       line-height: 1;
-      margin-bottom: $spacing-4;
-      background: $blue-gradient;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #0066cc 0%, #00b8d4 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     
     h1 {
-      font-size: $font-size-3xl;
-      margin-bottom: $spacing-4;
-      color: $secondary-color;
+      font-size: 1.875rem;
+      margin-bottom: 1rem;
+      color: #0d3d3d;
     }
     
     p {
-      font-size: $font-size-lg;
-      margin-bottom: $spacing-8;
-      color: $dark-gray;
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      color: #343a40;
     }
     
     .actions {
-      @include flex(column, center, center);
-      gap: $spacing-4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
       
-      @include media-breakpoint-up(md) {
-        @include flex(row, center, center);
-        gap: $spacing-6;
+      @media (min-width: 768px) {
+        flex-direction: row;
+        gap: 1.5rem;
       }
     }
   }

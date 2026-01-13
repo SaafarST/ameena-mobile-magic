@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
-import './assets/styles/global.scss'
+import './assets/styles/global.css'
 
 // Determine basename based on environment
 const basename = import.meta.env.PROD && window.location.hostname.includes('github.io')
