@@ -2,8 +2,8 @@
   Base styles for Saidzoda Engineering Website
 */
 
-@import './variables';
-@import './mixins';
+@use 'variables';
+@use 'mixins';
 
 /* Reset and base styles */
 *, *::before, *::after {
@@ -18,138 +18,138 @@ html {
 }
 
 body {
-  font-family: $font-family-base;
-  color: $secondary-color;
-  background-color: $white;
+  font-family: variables.$font-family-base;
+  color: variables.$secondary-color;
+  background-color: variables.$white;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family-heading;
-  margin-bottom: $spacing-4;
-  color: $dark-gray;
+  font-family: variables.$font-family-heading;
+  margin-bottom: variables.$spacing-4;
+  color: variables.$dark-gray;
 }
 
 h1 {
-  @include heading-1;
+  @include mixins.heading-1;
 }
 
 h2 {
-  @include heading-2;
+  @include mixins.heading-2;
 }
 
 h3 {
-  @include heading-3;
+  @include mixins.heading-3;
 }
 
 h4 {
-  @include heading-4;
+  @include mixins.heading-4;
 }
 
 p {
-  @include body-text;
-  margin-bottom: $spacing-4;
+  @include mixins.body-text;
+  margin-bottom: variables.$spacing-4;
 }
 
 a {
-  color: $primary-color;
+  color: variables.$primary-color;
   text-decoration: none;
-  transition: $transition-base;
+  transition: variables.$transition-base;
   
   &:hover {
-    color: $primary-dark;
+    color: variables.$primary-dark;
   }
 }
 
 strong {
-  font-weight: $font-weight-semibold;
+  font-weight: variables.$font-weight-semibold;
 }
 
 /* Container */
 .container {
-  @include container;
+  @include mixins.container;
 }
 
 .container-sm {
-  @include container($max-width: 768px);
+  @include mixins.container($max-width: 768px);
 }
 
 .container-lg {
-  @include container($max-width: 1400px);
+  @include mixins.container($max-width: 1400px);
 }
 
 .container-fluid {
-  @include container($max-width: 100%);
+  @include mixins.container($max-width: 100%);
 }
 
 /* Sections */
 .section {
-  padding: $spacing-16 0;
+  padding: variables.$spacing-16 0;
   
-  @include media-breakpoint-up(md) {
-    padding: $spacing-24 0;
+  @include mixins.media-breakpoint-up(md) {
+    padding: variables.$spacing-24 0;
   }
 }
 
 .section-sm {
-  padding: $spacing-8 0;
+  padding: variables.$spacing-8 0;
   
-  @include media-breakpoint-up(md) {
-    padding: $spacing-12 0;
+  @include mixins.media-breakpoint-up(md) {
+    padding: variables.$spacing-12 0;
   }
 }
 
 .section-lg {
-  padding: $spacing-20 0;
+  padding: variables.$spacing-20 0;
   
-  @include media-breakpoint-up(md) {
-    padding: $spacing-32 0;
+  @include mixins.media-breakpoint-up(md) {
+    padding: variables.$spacing-32 0;
   }
 }
 
 /* Engineering specific elements */
 .tech-bg {
-  @include tech-section-bg;
+  @include mixins.tech-section-bg;
 }
 
 .code-block {
-  @include code-block;
+  @include mixins.code-block;
 }
 
 /* Buttons */
 .btn {
-  @include button-base;
+  @include mixins.button-base;
 }
 
 .btn-primary {
-  @include button-primary;
+  @include mixins.button-primary;
 }
 
 .btn-secondary {
-  @include button-secondary;
+  @include mixins.button-secondary;
 }
 
 .btn-outline {
-  @include button-outline;
+  @include mixins.button-outline;
 }
 
 .btn-lg {
-  padding: $spacing-3 $spacing-6;
-  font-size: $font-size-lg;
+  padding: variables.$spacing-3 variables.$spacing-6;
+  font-size: variables.$font-size-lg;
 }
 
 .btn-sm {
-  padding: $spacing-1 $spacing-3;
-  font-size: $font-size-sm;
+  padding: variables.$spacing-1 variables.$spacing-3;
+  font-size: variables.$font-size-sm;
 }
 
 /* Cards */
 .card {
-  @include card;
-  padding: $spacing-6;
-  margin-bottom: $spacing-6;
+  @include mixins.card;
+  padding: variables.$spacing-6;
+  margin-bottom: variables.$spacing-6;
 }
 
 /* Utility classes */
@@ -162,54 +162,54 @@ strong {
 }
 
 .text-primary {
-  color: $primary-color;
+  color: variables.$primary-color;
 }
 
 .text-secondary {
-  color: $secondary-color;
+  color: variables.$secondary-color;
 }
 
 .text-accent {
-  color: $accent-color;
+  color: variables.$accent-color;
 }
 
 .bg-primary {
-  background-color: $primary-color;
-  color: $white;
+  background-color: variables.$primary-color;
+  color: variables.$white;
 }
 
 .bg-secondary {
-  background-color: $secondary-color;
-  color: $white;
+  background-color: variables.$secondary-color;
+  color: variables.$white;
 }
 
 .bg-light {
-  background-color: $light-gray;
+  background-color: variables.$light-gray;
 }
 
 .bg-dark {
-  background-color: $dark-gray;
-  color: $white;
+  background-color: variables.$dark-gray;
+  color: variables.$white;
 }
 
 .bg-gradient {
-  background-image: $blue-gradient;
-  color: $white;
+  background-image: variables.$blue-gradient;
+  color: variables.$white;
 }
 
-.mt-1 { margin-top: $spacing-1; }
-.mt-2 { margin-top: $spacing-2; }
-.mt-3 { margin-top: $spacing-3; }
-.mt-4 { margin-top: $spacing-4; }
-.mt-6 { margin-top: $spacing-6; }
-.mt-8 { margin-top: $spacing-8; }
+.mt-1 { margin-top: variables.$spacing-1; }
+.mt-2 { margin-top: variables.$spacing-2; }
+.mt-3 { margin-top: variables.$spacing-3; }
+.mt-4 { margin-top: variables.$spacing-4; }
+.mt-6 { margin-top: variables.$spacing-6; }
+.mt-8 { margin-top: variables.$spacing-8; }
 
-.mb-1 { margin-bottom: $spacing-1; }
-.mb-2 { margin-bottom: $spacing-2; }
-.mb-3 { margin-bottom: $spacing-3; }
-.mb-4 { margin-bottom: $spacing-4; }
-.mb-6 { margin-bottom: $spacing-6; }
-.mb-8 { margin-bottom: $spacing-8; }
+.mb-1 { margin-bottom: variables.$spacing-1; }
+.mb-2 { margin-bottom: variables.$spacing-2; }
+.mb-3 { margin-bottom: variables.$spacing-3; }
+.mb-4 { margin-bottom: variables.$spacing-4; }
+.mb-6 { margin-bottom: variables.$spacing-6; }
+.mb-8 { margin-bottom: variables.$spacing-8; }
 
 .mx-auto {
   margin-left: auto;
@@ -218,11 +218,11 @@ strong {
 
 /* Basic layout helpers */
 .flex {
-  @include flex;
+  @include mixins.flex;
 }
 
 .flex-col {
-  @include flex(column);
+  @include mixins.flex(column);
 }
 
 .items-center {
@@ -237,63 +237,63 @@ strong {
   justify-content: space-between;
 }
 
-.gap-2 { gap: $spacing-2; }
-.gap-4 { gap: $spacing-4; }
-.gap-6 { gap: $spacing-6; }
-.gap-8 { gap: $spacing-8; }
+.gap-2 { gap: variables.$spacing-2; }
+.gap-4 { gap: variables.$spacing-4; }
+.gap-6 { gap: variables.$spacing-6; }
+.gap-8 { gap: variables.$spacing-8; }
 
 .grid {
-  @include grid;
+  @include mixins.grid;
 }
 
 .grid-cols-2 {
-  @include grid(2);
+  @include mixins.grid(2);
 }
 
 .grid-cols-3 {
-  @include grid(3);
+  @include mixins.grid(3);
 }
 
 .grid-cols-4 {
-  @include grid(4);
+  @include mixins.grid(4);
 }
 
 /* Responsive utilities */
-@include media-breakpoint-up(md) {
+@include mixins.media-breakpoint-up(md) {
   .md-grid-cols-2 {
-    @include grid(2);
+    @include mixins.grid(2);
   }
   
   .md-grid-cols-3 {
-    @include grid(3);
+    @include mixins.grid(3);
   }
   
   .md-grid-cols-4 {
-    @include grid(4);
+    @include mixins.grid(4);
   }
 }
 
-@include media-breakpoint-up(lg) {
+@include mixins.media-breakpoint-up(lg) {
   .lg-grid-cols-2 {
-    @include grid(2);
+    @include mixins.grid(2);
   }
   
   .lg-grid-cols-3 {
-    @include grid(3);
+    @include mixins.grid(3);
   }
   
   .lg-grid-cols-4 {
-    @include grid(4);
+    @include mixins.grid(4);
   }
 }
 
 /* Animations */
 .fade-in {
-  @include fade-in;
+  @include mixins.fade-in;
 }
 
 .slide-in-up {
-  @include slide-in-up;
+  @include mixins.slide-in-up;
 }
 
 .delay-100 { animation-delay: 0.1s; }

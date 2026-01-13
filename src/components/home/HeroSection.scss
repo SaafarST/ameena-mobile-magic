@@ -1,5 +1,5 @@
-@import "../../assets/styles/variables";
-@import "../../assets/styles/mixins";
+@use "../../assets/styles/variables";
+@use "../../assets/styles/mixins";
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap");
 
 .hero-section {
@@ -116,12 +116,12 @@
 
   .hero-content {
     max-width: 1000px;
-    color: $white;
-    padding: $spacing-6;
+    color: variables.$white;
+    padding: variables.$spacing-6;
     text-align: center;
 
-    @include media-breakpoint-up(md) {
-      padding: 0 $spacing-4;
+    @include mixins.media-breakpoint-up(md) {
+      padding: 0 variables.$spacing-4;
     }
 
     // Hero Badge
@@ -138,7 +138,7 @@
       margin-bottom: 30px;
       animation: glow 3s ease-in-out infinite;
 
-      @include media-breakpoint-up(md) {
+      @include mixins.media-breakpoint-up(md) {
         font-size: 16px;
         padding: 10px 25px;
       }
@@ -160,7 +160,7 @@
         fadeInUp 0.8s ease-out both;
       animation-delay: 0.2s;
 
-      @include media-breakpoint-up(md) {
+      @include mixins.media-breakpoint-up(md) {
         font-size: clamp(3.5rem, 8vw, 7rem);
       }
     }
@@ -175,7 +175,7 @@
       animation: fadeInUp 0.8s ease-out both;
       animation-delay: 0.4s;
 
-      @include media-breakpoint-up(md) {
+      @include mixins.media-breakpoint-up(md) {
         font-size: clamp(1.3rem, 3vw, 1.8rem);
       }
     }
@@ -193,7 +193,7 @@
       animation: fadeInUp 0.8s ease-out both;
       animation-delay: 0.6s;
 
-      @include media-breakpoint-up(md) {
+      @include mixins.media-breakpoint-up(md) {
         font-size: clamp(1.1rem, 2vw, 1.3rem);
       }
     }
@@ -202,15 +202,15 @@
     .hero-cta {
       display: flex;
       flex-direction: column;
-      gap: $spacing-4;
+      gap: variables.$spacing-4;
       align-items: center;
       animation: fadeInUp 0.8s ease-out both;
       animation-delay: 0.8s;
 
-      @include media-breakpoint-up(md) {
+      @include mixins.media-breakpoint-up(md) {
         flex-direction: row;
         justify-content: center;
-        gap: $spacing-6;
+        gap: variables.$spacing-6;
       }
 
       .btn {
@@ -225,7 +225,7 @@
         overflow: hidden;
         min-width: 200px;
 
-        @include media-breakpoint-up(md) {
+        @include mixins.media-breakpoint-up(md) {
           padding: 18px 40px;
           min-width: 220px;
         }
@@ -233,14 +233,14 @@
 
       .btn-primary {
         background: linear-gradient(135deg, #059669, #10b981);
-        color: $white;
+        color: variables.$white;
         border: none;
         box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
 
         &:hover {
           transform: translateY(-3px);
           box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6);
-          color: $white;
+          color: variables.$white;
         }
       }
 
@@ -261,21 +261,21 @@
 
   .slide-dots {
     position: absolute;
-    bottom: $spacing-6;
+    bottom: variables.$spacing-6;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: $spacing-3;
+    gap: variables.$spacing-3;
     z-index: 10;
 
     .dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background-color: rgba($white, 0.3);
+      background-color: rgba(variables.$white, 0.3);
       border: none;
       cursor: pointer;
-      transition: $transition-base;
+      transition: variables.$transition-base;
 
       &.active {
         background-color: #10b981;
@@ -285,7 +285,7 @@
       }
 
       &:hover {
-        background-color: rgba($white, 0.6);
+        background-color: rgba(variables.$white, 0.6);
       }
     }
   }
@@ -305,12 +305,12 @@
       border-radius: 50%;
       background-color: rgba(16, 185, 129, 0.15);
       color: #34d399;
-      transition: $transition-base;
+      transition: variables.$transition-base;
       animation: bounce 3s infinite;
 
       &:hover {
         background-color: #10b981;
-        color: $white;
+        color: variables.$white;
         transform: translateY(-2px);
       }
     }
