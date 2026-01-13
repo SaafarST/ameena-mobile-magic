@@ -1,0 +1,300 @@
+/* 
+  Base styles for Saidzoda Engineering Website
+*/
+
+/* Reset and base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-base;
+  color: $secondary-color;
+  background-color: $white;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  margin-bottom: $spacing-4;
+  color: $dark-gray;
+}
+
+h1 {
+  @include heading-1;
+}
+
+h2 {
+  @include heading-2;
+}
+
+h3 {
+  @include heading-3;
+}
+
+h4 {
+  @include heading-4;
+}
+
+p {
+  @include body-text;
+  margin-bottom: $spacing-4;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: $transition-base;
+  
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+strong {
+  font-weight: $font-weight-semibold;
+}
+
+/* Container */
+.container {
+  @include container;
+}
+
+.container-sm {
+  @include container($max-width: 768px);
+}
+
+.container-lg {
+  @include container($max-width: 1400px);
+}
+
+.container-fluid {
+  @include container($max-width: 100%);
+}
+
+/* Sections */
+.section {
+  padding: $spacing-16 0;
+  
+  @include media-breakpoint-up(md) {
+    padding: $spacing-24 0;
+  }
+}
+
+.section-sm {
+  padding: $spacing-8 0;
+  
+  @include media-breakpoint-up(md) {
+    padding: $spacing-12 0;
+  }
+}
+
+.section-lg {
+  padding: $spacing-20 0;
+  
+  @include media-breakpoint-up(md) {
+    padding: $spacing-32 0;
+  }
+}
+
+/* Engineering specific elements */
+.tech-bg {
+  @include tech-section-bg;
+}
+
+.code-block {
+  @include code-block;
+}
+
+/* Buttons */
+.btn {
+  @include button-base;
+}
+
+.btn-primary {
+  @include button-primary;
+}
+
+.btn-secondary {
+  @include button-secondary;
+}
+
+.btn-outline {
+  @include button-outline;
+}
+
+.btn-lg {
+  padding: $spacing-3 $spacing-6;
+  font-size: $font-size-lg;
+}
+
+.btn-sm {
+  padding: $spacing-1 $spacing-3;
+  font-size: $font-size-sm;
+}
+
+/* Cards */
+.card {
+  @include card;
+  padding: $spacing-6;
+  margin-bottom: $spacing-6;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+.text-accent {
+  color: $accent-color;
+}
+
+.bg-primary {
+  background-color: $primary-color;
+  color: $white;
+}
+
+.bg-secondary {
+  background-color: $secondary-color;
+  color: $white;
+}
+
+.bg-light {
+  background-color: $light-gray;
+}
+
+.bg-dark {
+  background-color: $dark-gray;
+  color: $white;
+}
+
+.bg-gradient {
+  background-image: $blue-gradient;
+  color: $white;
+}
+
+.mt-1 { margin-top: $spacing-1; }
+.mt-2 { margin-top: $spacing-2; }
+.mt-3 { margin-top: $spacing-3; }
+.mt-4 { margin-top: $spacing-4; }
+.mt-6 { margin-top: $spacing-6; }
+.mt-8 { margin-top: $spacing-8; }
+
+.mb-1 { margin-bottom: $spacing-1; }
+.mb-2 { margin-bottom: $spacing-2; }
+.mb-3 { margin-bottom: $spacing-3; }
+.mb-4 { margin-bottom: $spacing-4; }
+.mb-6 { margin-bottom: $spacing-6; }
+.mb-8 { margin-bottom: $spacing-8; }
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Basic layout helpers */
+.flex {
+  @include flex;
+}
+
+.flex-col {
+  @include flex(column);
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-2 { gap: $spacing-2; }
+.gap-4 { gap: $spacing-4; }
+.gap-6 { gap: $spacing-6; }
+.gap-8 { gap: $spacing-8; }
+
+.grid {
+  @include grid;
+}
+
+.grid-cols-2 {
+  @include grid(2);
+}
+
+.grid-cols-3 {
+  @include grid(3);
+}
+
+.grid-cols-4 {
+  @include grid(4);
+}
+
+/* Responsive utilities */
+@include media-breakpoint-up(md) {
+  .md-grid-cols-2 {
+    @include grid(2);
+  }
+  
+  .md-grid-cols-3 {
+    @include grid(3);
+  }
+  
+  .md-grid-cols-4 {
+    @include grid(4);
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .lg-grid-cols-2 {
+    @include grid(2);
+  }
+  
+  .lg-grid-cols-3 {
+    @include grid(3);
+  }
+  
+  .lg-grid-cols-4 {
+    @include grid(4);
+  }
+}
+
+/* Animations */
+.fade-in {
+  @include fade-in;
+}
+
+.slide-in-up {
+  @include slide-in-up;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
