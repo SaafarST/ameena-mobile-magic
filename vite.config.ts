@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -13,6 +14,14 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  // 👇 ADD THIS SECTION TO FIX THE WARNING
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler', // Switches to the new Sass API
+      },
     },
   },
 }));

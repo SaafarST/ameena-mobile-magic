@@ -12,7 +12,9 @@
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
-  
+  display: flex;
+  flex-direction: column;
+
   // Animated Tech Grid Background
   .card-tech-pattern {
     position: absolute;
@@ -20,7 +22,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
+    background-image:
       linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
     background-size: 20px 20px;
@@ -28,15 +30,17 @@
     transition: opacity 0.4s ease;
     animation: grid-pulse 4s ease-in-out infinite;
     pointer-events: none;
+    z-index: 0;
   }
-  
+
   // Floating Particles
   .floating-particles {
     position: absolute;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    
+    z-index: 1;
+
     .particle {
       position: absolute;
       width: 4px;
@@ -45,25 +49,27 @@
       border-radius: 50%;
       opacity: 0;
       animation: float-particle 6s ease-in-out infinite;
-      
-      &:nth-child(1) { 
-        top: 20%; 
-        left: 15%; 
-        animation-delay: 0s; 
+
+      &:nth-child(1) {
+        top: 20%;
+        left: 15%;
+        animation-delay: 0s;
       }
-      &:nth-child(2) { 
-        top: 60%; 
-        right: 20%; 
-        animation-delay: 2s; 
+
+      &:nth-child(2) {
+        top: 60%;
+        right: 20%;
+        animation-delay: 2s;
       }
-      &:nth-child(3) { 
-        bottom: 30%; 
-        left: 60%; 
-        animation-delay: 4s; 
+
+      &:nth-child(3) {
+        bottom: 30%;
+        left: 60%;
+        animation-delay: 4s;
       }
     }
   }
-  
+
   // Glow Effect
   .card-glow {
     position: absolute;
@@ -75,8 +81,9 @@
     opacity: 0;
     transition: opacity 0.6s ease;
     pointer-events: none;
+    z-index: 0;
   }
-  
+
   // Holographic Border
   .holographic-border {
     position: absolute;
@@ -85,109 +92,23 @@
     right: 0;
     bottom: 0;
     border-radius: 24px;
-    background: linear-gradient(45deg, 
-      transparent 30%, 
-      rgba(16, 185, 129, 0.1) 50%, 
-      transparent 70%);
+    background: linear-gradient(45deg, transparent 30%, rgba(16, 185, 129, 0.1) 50%, transparent 70%);
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
+    z-index: 10;
   }
-  
+
   .card-content {
     position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
     padding: 32px 28px;
-    z-index: 2;
+    z-index: 5;
   }
-  
-  // Hover Effects
-  &:hover {
-    transform: translateY(-15px) scale(1.02);
-    box-shadow: 
-      0 25px 50px rgba(16, 185, 129, 0.2),
-      0 15px 35px rgba(0, 0, 0, 0.1);
-    border-color: rgba(16, 185, 129, 0.3);
-    
-    .card-tech-pattern {
-      opacity: 1;
-    }
-    
-    .card-glow {
-      opacity: 1;
-    }
-    
-    .holographic-border {
-      opacity: 1;
-    }
-    
-    .floating-particles .particle {
-      opacity: 0.8;
-    }
-    
-    .service-icon {
-      transform: scale(1.1);
-      
-      .icon-orbit {
-        opacity: 1;
-        
-        .orbit-ring {
-          animation: orbit-spin 3s linear infinite;
-        }
-        
-        .orbit-ring-2 {
-          animation: orbit-spin-reverse 4s linear infinite;
-        }
-      }
-      
-      .icon-glow {
-        opacity: 1;
-      }
-      
-      .icon-pulse {
-        opacity: 1;
-        animation: pulse-glow 2s ease-in-out infinite;
-      }
-      
-      img {
-        //filter: brightness(0) invert(1);
-        transform: scale(1.1);
-      }
-    }
-    
-    .service-title {
-      background: linear-gradient(135deg, #10b981, #059669);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .service-badge {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: white;
-      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
-    }
-    
-    .service-link {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
-      
-      .link-arrow {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateX(5px);
-      }
-      
-      .link-ripple {
-        animation: ripple 0.8s linear;
-      }
-    }
-  }
-  
-  // Service Icon
+
+  // --- SERVICE ICON (The Critical Part) ---
   .service-icon {
     position: relative;
     width: 90px;
@@ -200,14 +121,16 @@
     background: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(20, 184, 166, 0.1));
     border: 2px solid rgba(16, 185, 129, 0.2);
     transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    
+
+    // Orbit Rings
     .icon-orbit {
       position: absolute;
       width: 120px;
       height: 120px;
       opacity: 0;
       transition: opacity 0.4s ease;
-      
+      pointer-events: none;
+
       .orbit-ring {
         position: absolute;
         top: 50%;
@@ -220,7 +143,7 @@
         border-right-color: transparent;
         transform: translate(-50%, -50%);
       }
-      
+
       .orbit-ring-2 {
         width: 80%;
         height: 80%;
@@ -228,7 +151,8 @@
         border-top-color: #059669;
       }
     }
-    
+
+    // Background Glow
     .icon-glow {
       position: absolute;
       top: -10px;
@@ -242,7 +166,8 @@
       filter: blur(15px);
       z-index: -1;
     }
-    
+
+    // Pulse Ring
     .icon-pulse {
       position: absolute;
       top: -5px;
@@ -254,21 +179,36 @@
       opacity: 0;
       transition: opacity 0.4s ease;
     }
-    
-    img {
+
+    // IMAGE HANDLING
+    img.icon-img {
       width: 50px;
       height: 50px;
       transition: all 0.4s ease;
-      z-index: 1;
+      z-index: 5;
+      object-fit: contain;
+    }
+
+    // EMOJI HANDLING (New!)
+    .icon-emoji {
+      font-size: 3rem;
+      line-height: 1;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.4));
+      animation: float-emoji 3s ease-in-out infinite;
     }
   }
-  
-  // Service Header
+
+  // --- CONTENT STYLING ---
+
   .service-header {
     text-align: center;
     margin-bottom: 20px;
   }
-  
+
   .service-badge {
     display: inline-block;
     background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(20, 184, 166, 0.1));
@@ -284,7 +224,7 @@
     margin-bottom: 12px;
     transition: all 0.4s ease;
   }
-  
+
   .service-title {
     font-family: 'Orbitron', monospace;
     font-size: 22px;
@@ -295,8 +235,7 @@
     line-height: 1.3;
     text-align: center;
   }
-  
-  // Service Description
+
   .service-description {
     font-family: 'Inter', sans-serif;
     color: #64748b;
@@ -306,8 +245,8 @@
     font-size: 15px;
     text-align: center;
   }
-  
-  // Service Link
+
+  // --- LINK STYLING ---
   .service-link {
     display: flex;
     align-items: center;
@@ -325,11 +264,11 @@
     text-decoration: none;
     position: relative;
     overflow: hidden;
-    
+
     .link-text {
       transition: color 0.3s ease;
     }
-    
+
     .link-arrow {
       display: flex;
       align-items: center;
@@ -339,13 +278,13 @@
       border-radius: 50%;
       background: rgba(16, 185, 129, 0.15);
       transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      
+
       svg {
         color: #10b981;
         transition: color 0.3s ease;
       }
     }
-    
+
     .link-ripple {
       position: absolute;
       top: 50%;
@@ -358,96 +297,200 @@
       opacity: 0;
     }
   }
-  
-  // Category-based theming
+
+  // --- HOVER EFFECTS ---
+  &:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow:
+      0 25px 50px rgba(16, 185, 129, 0.2),
+      0 15px 35px rgba(0, 0, 0, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+
+    .card-tech-pattern,
+    .card-glow,
+    .holographic-border {
+      opacity: 1;
+    }
+
+    .floating-particles .particle {
+      opacity: 0.8;
+    }
+
+    .service-icon {
+      transform: scale(1.1);
+
+      .icon-orbit {
+        opacity: 1;
+
+        .orbit-ring {
+          animation: orbit-spin 3s linear infinite;
+        }
+
+        .orbit-ring-2 {
+          animation: orbit-spin-reverse 4s linear infinite;
+        }
+      }
+
+      .icon-glow {
+        opacity: 1;
+      }
+
+      .icon-pulse {
+        opacity: 1;
+        animation: pulse-glow 2s ease-in-out infinite;
+      }
+
+      img.icon-img {
+        transform: scale(1.1);
+      }
+
+      .icon-emoji {
+        transform: scale(1.2);
+      }
+    }
+
+    .service-title {
+      background: linear-gradient(135deg, #10b981, #059669);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .service-badge {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .service-link {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+
+      .link-arrow {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(5px);
+      }
+
+      .link-ripple {
+        animation: ripple 0.8s linear;
+      }
+    }
+  }
+
+  // --- CATEGORY THEMES ---
+
   &.service-card-engineering {
     .service-icon {
       background: linear-gradient(145deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.1));
       border-color: rgba(34, 197, 94, 0.2);
     }
-    
+
     .service-badge {
       background: linear-gradient(90deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.1));
       border-color: rgba(34, 197, 94, 0.2);
       color: #22c55e;
     }
-    
-    &:hover {
-      .service-title {
-        background: linear-gradient(135deg, #22c55e, #10b981);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
+
+    &:hover .service-title {
+      background: linear-gradient(135deg, #22c55e, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
   }
-  
+
   &.service-card-data {
     .service-icon {
       background: linear-gradient(145deg, rgba(20, 184, 166, 0.1), rgba(236, 72, 153, 0.1));
       border-color: rgba(20, 184, 166, 0.2);
     }
-    
+
     .service-badge {
       background: linear-gradient(90deg, rgba(20, 184, 166, 0.1), rgba(236, 72, 153, 0.1));
       border-color: rgba(20, 184, 166, 0.2);
       color: #a855f7;
     }
-    
-    &:hover {
-      .service-title {
-        background: linear-gradient(135deg, #a855f7, #ec4899);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
+
+    &:hover .service-title {
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
   }
-  
+
+  &.service-card-solar {
+    .service-icon {
+      background: linear-gradient(145deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.1));
+      border-color: rgba(251, 191, 36, 0.2);
+    }
+
+    .service-badge {
+      background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.1));
+      border-color: rgba(251, 191, 36, 0.2);
+      color: #f59e0b;
+    }
+
+    &:hover .service-title {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
   // Animation for cards appearing
   &.slide-in-up {
     animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     opacity: 0;
   }
-  
+
   // Mobile Responsiveness
   @media (max-width: 768px) {
     min-height: 360px;
-    
+
     .card-content {
       padding: 24px 20px;
     }
-    
+
     .service-icon {
       width: 80px;
       height: 80px;
-      
-      img {
+
+      img.icon-img {
         width: 45px;
         height: 45px;
       }
+
+      .icon-emoji {
+        font-size: 2.5rem;
+      }
     }
-    
+
     .service-title {
       font-size: 20px;
     }
-    
+
     .service-description {
       font-size: 14px;
     }
-    
+
     &:hover {
       transform: translateY(-8px) scale(1.01);
     }
   }
 }
 
-// Animations
+// --- ANIMATION KEYFRAMES ---
+
 @keyframes slideInUp {
   from {
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -455,37 +498,72 @@
 }
 
 @keyframes grid-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
 }
 
 @keyframes float-particle {
-  0%, 100% { 
+
+  0%,
+  100% {
     opacity: 0;
     transform: translateY(0px) scale(0.8);
   }
-  50% { 
+
+  50% {
     opacity: 1;
     transform: translateY(-15px) scale(1.2);
   }
 }
 
+@keyframes float-emoji {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
 @keyframes orbit-spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 @keyframes orbit-spin-reverse {
-  from { transform: translate(-50%, -50%) rotate(360deg); }
-  to { transform: translate(-50%, -50%) rotate(0deg); }
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { 
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.5;
   }
-  50% { 
+
+  50% {
     transform: scale(1.05);
     opacity: 1;
   }
